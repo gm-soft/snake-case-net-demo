@@ -11,6 +11,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using SnakeCaseDemo.Utils.Errors;
+using SnakeCaseDemo.Utils.Json;
 
 namespace SnakeCaseDemo
 {
@@ -26,8 +28,19 @@ namespace SnakeCaseDemo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services
+                .AddMvc()
+                .AddJsonOptions(x =>
+                {
+                    x.JsonSerializerOptions.PropertyNamingPolicy = new SnakeCaseNamingPolicy();
+                });
 
-            services.AddControllers();
+            services
+                .Configure<ApiBehaviorOptions>(x =>
+                {
+                    x.InvalidModelStateResponseFactory = ctx => new ValidationProblemDetailsResult();
+                });
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SnakeCaseDemo", Version = "v1" });

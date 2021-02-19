@@ -1,6 +1,6 @@
 using System;
 
-namespace SnakeCaseDemo
+namespace SnakeCaseDemo.Models
 {
     public class WeatherForecast
     {
