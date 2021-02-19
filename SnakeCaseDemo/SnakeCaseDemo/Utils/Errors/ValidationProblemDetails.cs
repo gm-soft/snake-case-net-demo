@@ -15,8 +15,6 @@ namespace SnakeCaseDemo.Utils.Errors
 
             Status = ValidationStatusCode;
             Title = "Request Validation Error";
-
-            // TODO Maxim: если будет балансировка, то тут нужно будет передавать имя ноды
             Instance = "CT Portal";
         }
 
