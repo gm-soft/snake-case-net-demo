@@ -2,18 +2,18 @@
 
 namespace SnakeCaseDemo.Models
 {
-    public class FormData
+    public record FormData
     {
         [Required]
-        public string Email { get; set; }
+        public string Email { get; init; }
 
         [Required]
-        public string Password { get; set; }
+        public string Password { get; init; }
 
         [Required]
-        public string FirstName { get; set; }
+        public string FirstName { get; init; }
 
         [Required]
-        public string LastName { get; set; }
+        public string LastName { get; init; }
     }
 }
